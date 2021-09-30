@@ -1,0 +1,30 @@
+String code;
+   String model;
+   String color;
+   int price;
+   String storage;
+   Date date;
+   
+   code = txtcode.getText();
+   model = txtmod.getSelectedItem().toString();
+   color = txtcol.getSelectedItem().toString();
+   price = Integer.parseInt(txtpri.getText());
+   storage = txtsto.getSelectedItem().toString();
+   
+   java.util.Date date2 = jDateChooser1.getDate(); 
+   SimpleDateFormat dte = new SimpleDateFormat("yyyy-MM-dd");
+   String strdate1 = dte.format(date2);
+ 
+   
+        
+        
+        try {
+            String sql = "insert into Purchase(ImeiCode,Model,Color,Price,Storage,Date)values('"+code+"','"+model+"','"+color+"','"+price+"','"+storage+"','"+strdate1+"')";
+             pst = conn.prepareStatement(sql);
+             pst.execute(sql);
+        JOptionPane.showMessageDialog(null,"Add Purchase Item");
+             
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e);
+        }
